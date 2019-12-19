@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<VBox alignment="CENTER" prefHeight="225.0" prefWidth="294.0" spacing="20.0" style="-fx-background-color: #fff;"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.draganovic.PrimaryController">
+    <children>
+        <Label fx:id="primaryText" layoutX="111.0" layoutY="49.0" text="Primary View"/>
+        <JFXButton fx:id="primaryButton" layoutX="67.0" layoutY="113.0" onAction="#switchToSecondary"
+                   style="-fx-background-color: #2e84da#2e84da;" text="Switch to Secondary View" textFill="WHITE"/>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+</VBox>

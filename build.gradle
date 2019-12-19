@@ -1,0 +1,44 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.5'
+    id 'org.beryx.jlink' version '2.17.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.logging.log4j:log4j-core:2.11.1'
+    compile 'org.jsoup:jsoup:1.12.1'
+    compile 'com.jfoenix:jfoenix:9.0.8'
+}
+
+javafx {
+    version = "11"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+mainClassName = "OpenJFXQuickstart/com.draganovic.App"
+
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'OpenJFXQuickstart'
+    }
+    forceMerge('log4j-api','jsoup')
+
+    jpackage {
+        jpackageHome = '/Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home'
+        outputDir = 'OpenJFXQuickstart'
+        imageName = 'OpenJFXQuickstart'
+        skipInstaller = false
+        installerName = 'OpenJFXQuickstart'
+
+        if (org.gradle.internal.os.OperatingSystem.current().windows) {
+            installerType = 'msi'
+            imageOptions = ['--win-console']
+            installerOptions = ['--win-per-user-install', '--win-dir-chooser', '--win-menu', '--win-shortcut']
+        }
+    }
+}
